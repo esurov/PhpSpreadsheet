@@ -23,6 +23,7 @@ class Iterator implements \Iterator
     /**
      * Create a new worksheet iterator.
      */
+    #[\ReturnTypeWillChange]
     public function __construct(Spreadsheet $subject)
     {
         // Set subject
@@ -32,6 +33,7 @@ class Iterator implements \Iterator
     /**
      * Destructor.
      */
+    #[\ReturnTypeWillChange]
     public function __destruct()
     {
         $this->subject = null;
@@ -40,6 +42,7 @@ class Iterator implements \Iterator
     /**
      * Rewind iterator.
      */
+    #[\ReturnTypeWillChange]
     public function rewind(): void
     {
         $this->position = 0;
@@ -48,6 +51,7 @@ class Iterator implements \Iterator
     /**
      * Current Worksheet.
      */
+    #[\ReturnTypeWillChange]
     public function current(): Worksheet
     {
         return $this->subject->getSheet($this->position);
@@ -56,6 +60,7 @@ class Iterator implements \Iterator
     /**
      * Current key.
      */
+    #[\ReturnTypeWillChange]
     public function key(): int
     {
         return $this->position;
@@ -64,6 +69,7 @@ class Iterator implements \Iterator
     /**
      * Next value.
      */
+    #[\ReturnTypeWillChange]
     public function next(): void
     {
         ++$this->position;
@@ -74,6 +80,7 @@ class Iterator implements \Iterator
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return $this->position < $this->subject->getSheetCount() && $this->position >= 0;
