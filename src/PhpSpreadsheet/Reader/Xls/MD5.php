@@ -65,10 +65,10 @@ class MD5
         $C = $this->c;
         $D = $this->d;
 
-        $F = ['self', 'f'];
-        $G = ['self', 'g'];
-        $H = ['self', 'h'];
-        $I = ['self', 'i'];
+        $F = [self::class, 'f'];
+        $G = [self::class, 'g'];
+        $H = [self::class, 'h'];
+        $I = [self::class, 'i'];
 
         // ROUND 1
         self::step($F, $A, $B, $C, $D, $words[0], 7, 0xd76aa478);

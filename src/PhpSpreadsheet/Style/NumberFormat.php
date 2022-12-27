@@ -473,7 +473,7 @@ class NumberFormat extends Supervisor
 
         // OpenOffice.org uses upper-case number formats, e.g. 'YYYY', convert to lower-case;
         //    but we don't want to change any quoted strings
-        $format = preg_replace_callback('/(?:^|")([^"]*)(?:$|")/', ['self', 'setLowercaseCallback'], $format);
+        $format = preg_replace_callback('/(?:^|")([^"]*)(?:$|")/', [self::class, 'setLowercaseCallback'], $format);
 
         // Only process the non-quoted blocks for date format characters
         $blocks = explode('"', $format);
@@ -499,7 +499,7 @@ class NumberFormat extends Supervisor
         $format = implode('"', $blocks);
 
         // escape any quoted characters so that DateTime format() will render them correctly
-        $format = preg_replace_callback('/"(.*)"/U', ['self', 'escapeQuotesCallback'], $format);
+        $format = preg_replace_callback('/"(.*)"/U', [self::class, 'escapeQuotesCallback'], $format);
 
         $dateObj = Date::excelToDateTimeObject($value);
         $value = $dateObj->format($format);
